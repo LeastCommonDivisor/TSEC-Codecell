@@ -28,7 +28,6 @@ M is the matrix given by :
 
 find the value of ans(i) by using matrix exponentiation on this matrix with modulus
 See extra stuff for more details
-// refer code for more details
 
 Time complexity : O(3^3 * log(n)) = O(27* log(n)) // log is base 2
 Space complexity : O(27*log(n)) -- if recursion is used // log is base 2
