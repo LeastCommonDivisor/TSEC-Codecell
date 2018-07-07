@@ -1,0 +1,42 @@
+COUNTING TILES
+
+The problem is similar to finding no. of ways to sum to 'n' using only 1, 2, 3
+
+assuming answer as a function of 'n' ,
+we can write the recursive equation as :
+
+answer(n) = answer(n-1) + answer(n-2) + answer(n-3) if n > 0
+answer(n) = 1 if n = 0
+answer(n) = 0 if n < 0
+
+using this we can write a program to compute the answer(n)
+but this will have huge time complexity
+
+Since the problem has operalapping subproblems, we can use Dynamic Programming
+this will have a time complexity of O(n)
+
+but the constraints will not allow for even this to pass so we need a faster algorithm
+
+Now, we will use matrix exponentiation for this problem
+
+[ ans(i-3) ans(i-2) ans(i-1) ] * M = [ ans(i-2) ans(i-1) ans(i) ] (use this for i >= 3)
+
+M is the matrix given by :
+0 0 1
+1 0 1
+0 1 1
+
+find the value of ans(i) by using matrix exponentiation on this matrix with modulus
+See extra stuff for more details
+// refer code for more details
+
+Time complexity : O(3^3 * log(n)) = O(27* log(n)) // log is base 2
+Space complexity : O(27*log(n)) -- if recursion is used // log is base 2
+
+:: Extra Stuff ::
+
+https://www.geeksforgeeks.org/count-ofdifferent-ways-express-n-sum-1-3-4/
+https://www.nayuki.io/page/fast-fibonacci-algorithms
+https://www.geeksforgeeks.org/matrix-exponentiation/
+
+can it be done for numbers > 10^18(long long range) ? Using BigInteger in Java ?
