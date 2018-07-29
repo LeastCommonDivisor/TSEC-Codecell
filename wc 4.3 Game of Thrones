@@ -1,0 +1,66 @@
+The problem reduces to finding a solution to the equation:-
+
+n*x = m*y + 1
+(or)
+n*x - m*y = 1
+
+where 
+n = no. of gold coins in one crate
+m = no. of people to distribute the coins
+
+The values of x and y must be integers( >= 0) otherwise it wouldn't make sense
+and the value of x must be smallest possible
+
+First, let use forget about the negative sign and focus on the equation:- n*x + m*y = 1
+and try to find the answer for that
+
+We can try using the iterative approach from x = 1 onwards but this would time out as the values are too large
+
+To find whether there is a solution(i.e. if solution is possible) we first need to check whether gcd(n, m) = 1 or not
+This can be seen from Bézout's identity : https://en.wikipedia.org/wiki/B%C3%A9zout%27s_identity
+
+if gcd(n, m) = 1 then solution is possible else not
+
+if it's possible then
+We can use 'Extended Euclidean Algorithm' to find the solution in less time : 
+https://www.geeksforgeeks.org/euclidean-algorithms-basic-and-extended/
+https://brilliant.org/wiki/extended-euclidean-algorithm/
+https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm
+
+Another property of this algorithm is that it gives one of two minimal pairs of integers as solution
+which means x can have larget negative or smallest positive value
+
+if x has a negative value then we simply need to add 'm' to it to find the next solution which will be +ve
+as n*x + m*y = n*(x+m) + m*(y-n) (if x is -ve then x+m will be first positive solution)
+
+Thus, we have solved for n*x + m*y = 1
+
+Regarding the negative sign for equation : n*x - m*y = 1
+the -ve sign is of little significance but makes the problem better to interpret in real world sense
+if you've solved for n*x + m*y = 1, then you just need to use -y in n*x - m*y = 1 to get the y-value(it wasn't required anyways)
+
+
+Pseudocode for a single test case:
+
+read n and m
+if gcd(n, m) != 1
+	then ans = -1
+else
+	if n = 1 or m = 1 // simple condition(not really required)
+		then ans = 1
+	else
+		use Extended Euclidean Algorithm for finding coefficients for eqn : n*x + m*y = 1
+		if x < 0
+			x = x + m
+		ans = x
+
+Time complexity(for a single test case) : O(log(min(n, m))) approximately, similar to euclid's algo for GCD
+https://en.wikipedia.org/wiki/Euclidean_algorithm#Algorithmic_efficiency
+
+Links for further explanation:
+https://math.stackexchange.com/questions/37806/extended-euclidean-algorithm-with-negative-numbers?rq=1
+
+Bonus facts :
+x is also the modular multiplicative inverse of n mod m
+i.e. (n*x) % m = 1
+so the question is to basically find the smallest positive modular multiplicative inverse of 'n' where mod value = 'm'
