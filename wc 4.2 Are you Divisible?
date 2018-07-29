@@ -1,0 +1,27 @@
+Since the integer is very large, we can input as a string
+
+Let us define a function f(x) as:
+number of subsequences of an integer divisible by x
+
+Iterating each element of the string one by one from the beginning(or end), we can store the modulus array at each step
+and increment it respectively at each digit
+At the end, the no. of subsequences divisible by x will have modulus 0
+For detailed explanation, refer : https://www.geeksforgeeks.org/number-subsequences-string-divisible-n/
+
+To find the subsequences divisible by (2,3,5)
+we can use the formula from set theory:
+f(2,3,5) = f(2) + f(3) + f(5) - f(2*3) - f(3*5) - f(2*5) + f(2*3*5)
+
+Implement the function f(x) for all these numbers and compute the answer
+
+Alternative solution:
+
+Observing that for divisibility by 2 or 5, we only need to check the last digit we can find the subsequences easily
+For the element at position i, if it is divisible by 2 or 5, no. of subsequences ending with that digit = 2^(i-1)
+
+Using the above explanation, we can first calculate the number of subsequences divisible by 3 but not by 2 or 5
+and then calculate the subsequences divisible by 2 or 5
+
+// Alternative solution
+Time complexity : O(3*n + n) = O(n) // n is the length of string
+Space complexity : O(n + 3) = O(n) // n is length of string
