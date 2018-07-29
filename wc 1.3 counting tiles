@@ -12,7 +12,7 @@ answer(n) = 0 if n < 0
 using this we can write a program to compute the answer(n)
 but this will have huge time complexity
 
-Since the problem has operalapping subproblems, we can use Dynamic Programming
+Since the problem has overalapping subproblems, we can use Dynamic Programming
 this will have a time complexity of O(n)
 
 but the constraints will not allow for even this to pass so we need a faster algorithm
@@ -33,7 +33,7 @@ Time complexity : O(3^3 * log(n)) = O(27* log(n)) // log is base 2
 Space complexity : O(27*log(n)) -- if recursion is used // log is base 2
 
 :: Extra Stuff ::
-
+https://www.hackerearth.com/practice/notes/matrix-exponentiation-1/
 https://www.geeksforgeeks.org/count-ofdifferent-ways-express-n-sum-1-3-4/
 https://www.nayuki.io/page/fast-fibonacci-algorithms
 https://www.geeksforgeeks.org/matrix-exponentiation/
